@@ -24,8 +24,8 @@ class HelloWorldViewProvider implements vscode.WebviewViewProvider {
         <head>
           <meta charset="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <link rel="stylesheet" crossorigin href="${webviewUri}/index.css">
           <script type="module" crossorigin src="${webviewUri}/index.js"></script>
-          <link rel="stylesheet" crossorigin href="${webviewUri}/style.css">
         </head>
         <body>
           <div id="app"></div>
@@ -33,8 +33,8 @@ class HelloWorldViewProvider implements vscode.WebviewViewProvider {
       </html>
     `;
 
-    // Initialize message handler with extension context
-    const messageHandler = new MessageHandler(webviewView.webview, this.context);
+    // Initialize message handler
+    const messageHandler = new MessageHandler(webviewView.webview);
 
     // Handle messages
     webviewView.webview.onDidReceiveMessage(async (message: FromWebviewMessage) => {

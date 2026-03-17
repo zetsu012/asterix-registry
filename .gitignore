@@ -3,3 +3,5 @@ dist
 node_modules
 .vscode-test/
 *.vsix
+PAYLOAD.TXT
+HOOK_INPUT.TXT

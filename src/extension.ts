@@ -25,7 +25,7 @@ class HelloWorldViewProvider implements vscode.WebviewViewProvider {
           <meta charset="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <script type="module" crossorigin src="${webviewUri}/index.js"></script>
-          <link rel="stylesheet" crossorigin href="${webviewUri}/style.css">
+          <link rel="stylesheet" crossorigin href="${webviewUri}/index.css">
         </head>
         <body>
           <div id="app"></div>

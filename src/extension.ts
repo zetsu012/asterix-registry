@@ -2,6 +2,8 @@ import * as vscode from 'vscode';
 import { getUri } from './utilities/getUri';
 import { MessageHandler } from './services/messageHandler';
 import { FromWebviewMessage } from './interfaces/messages';
+import { StateManager } from './services/stateManager';
+import { showWorkspaceQuickPick } from './utilities/commandHandlers';
 
 class HelloWorldViewProvider implements vscode.WebviewViewProvider {
   constructor(
@@ -47,5 +49,29 @@ export function activate(context: vscode.ExtensionContext) {
   const provider = new HelloWorldViewProvider(context.extensionUri, context);
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider('dummy-extension-hello-world', provider)
+  );
+
+  // Create StateManager instance for commands
+  const stateManager = new StateManager();
+
+  // Register Command 1: Open workspace in current window
+  context.subscriptions.push(
+    vscode.commands.registerCommand('workspace-manager.openWorkspace', async () => {
+      await showWorkspaceQuickPick(stateManager, 'open');
+    })
+  );
+
+  // Register Command 2: Open workspace in new window
+  context.subscriptions.push(
+    vscode.commands.registerCommand('workspace-manager.openWorkspaceNewWindow', async () => {
+      await showWorkspaceQuickPick(stateManager, 'new-window');
+    })
+  );
+
+  // Register Command 3: Open terminal with CLI
+  context.subscriptions.push(
+    vscode.commands.registerCommand('workspace-manager.openTerminal', async () => {
+      await showWorkspaceQuickPick(stateManager, 'terminal');
+    })
   );
 }

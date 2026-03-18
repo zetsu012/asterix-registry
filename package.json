@@ -12,6 +12,23 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "workspace-manager.openWorkspace",
+        "title": "Open",
+        "category": "Workspace Manager"
+      },
+      {
+        "command": "workspace-manager.openWorkspaceNewWindow",
+        "title": "Open in New Window",
+        "category": "Workspace Manager"
+      },
+      {
+        "command": "workspace-manager.openTerminal",
+        "title": "Open Terminal",
+        "category": "Workspace Manager"
+      }
+    ],
     "viewsContainers": {
       "activitybar": [
         {
